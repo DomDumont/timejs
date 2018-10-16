@@ -8,7 +8,7 @@ My ridicule attempt to do a minimalist engine
 - GameMaker is expensive
 - Godot feels 'strange'
 
-So let's make another small ans useless engine :-)
+So let's make another small and useless engine :-)
 
 Crazy enough to try ?
 
