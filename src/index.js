@@ -2,6 +2,7 @@ const { Howl, Howler } = require("howler");
 const PIXI = require("pixi.js");
 const catImage = require("./assets/cat.png");
 const testMusic = require("./assets/test.mp3");
+const inputManager = require("./input");
 
 let app = new PIXI.Application({
   width: 800, // default: 800
@@ -18,6 +19,8 @@ document.body.appendChild(app.view);
 PIXI.loader.add(catImage).load(setup);
 
 let cat;
+let message;
+
 //This `setup` function will run when the image has loaded
 function setup() {
   //Create the cat sprite
@@ -26,19 +29,50 @@ function setup() {
   //Add the cat to the stage
   app.stage.addChild(cat);
 
+  let style = new PIXI.TextStyle({
+    fontFamily: "Arial",
+    fontSize: 24,
+    fill: "white",
+    stroke: "#ff3300",
+    strokeThickness: 4,
+    dropShadow: true,
+    dropShadowColor: "#000000",
+    dropShadowBlur: 4,
+    dropShadowAngle: Math.PI / 6,
+    dropShadowDistance: 6
+  });
+
+  message = new PIXI.Text("Hello Pixi!", style);
+  // message.position.set(54, 96);
+  app.stage.addChild(message);
+
   var sound = new Howl({
     src: [testMusic]
   });
 
   sound.play();
 
+  inputManager.Init();
   //Start the game loop
   app.ticker.add(delta => gameLoop(delta));
 }
 
 function gameLoop(delta) {
-  //Move the cat 1 pixel
-  if (cat.x < 600) cat.x += 1;
+  message.setText(Math.round(app.ticker.FPS));
+  inputManager.Update();
+
+  if (inputManager.IsKeyDown(inputManager.vk_left)) {
+    cat.x -= 5;
+  }
+  if (inputManager.IsKeyDown(inputManager.vk_right)) {
+    cat.x += 5;
+  }
+  if (inputManager.IsKeyDown(inputManager.vk_down)) {
+    cat.y += 5;
+  }
+  if (inputManager.IsKeyDown(inputManager.vk_up)) {
+    cat.y -= 5;
+  }
 
   //Optionally use the `delta` value
   //cat.x += 1 + delta;
