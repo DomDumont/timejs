@@ -2,6 +2,7 @@ const { Howl, Howler } = require("howler");
 const PIXI = require("pixi.js");
 const catImage = require("./assets/cat.png");
 const testMusic = require("./assets/test.mp3");
+const map01 = require("./assets/map01.json");
 const inputManager = require("./input");
 
 let app = new PIXI.Application({
@@ -53,6 +54,9 @@ function setup() {
   sound.play();
 
   inputManager.Init();
+
+  testTiled();
+
   //Start the game loop
   app.ticker.add(delta => gameLoop(delta));
 }
@@ -76,4 +80,14 @@ function gameLoop(delta) {
 
   //Optionally use the `delta` value
   //cat.x += 1 + delta;
+}
+
+function testTiled() {
+  console.log(testTiled);
+  console.dir(map01);
+  map01.layers.forEach(renderLayer);
+}
+
+function renderLayer(layer) {
+  console.log("renderLayer " + layer.name);
 }
