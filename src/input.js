@@ -21,13 +21,17 @@ inputManager.IsKeyDown = function(keyCode) {
 };
 
 inputManager.downHandler = function(event) {
-  if (event.which == 18) event.preventDefault();
-  inputManager.realStates[event.which] = true;
+  var key = window.event ? event.keyCode : event.which;
+
+  if (key == 18) event.preventDefault();
+  inputManager.realStates[key] = true;
 };
 
-inputManager.upHandler = function(code) {
-  if (event.which == 18) event.preventDefault();
-  inputManager.realStates[event.which] = false;
+inputManager.upHandler = function(event) {
+  var key = window.event ? event.keyCode : event.which;
+
+  if (key == 18) event.preventDefault();
+  inputManager.realStates[key] = false;
 };
 
 window.addEventListener(
