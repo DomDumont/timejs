@@ -1,4 +1,5 @@
 var inputManager = {
+  vk_escape: 27,
   vk_left: 37,
   vk_up: 38,
   vk_right: 39,
@@ -20,9 +21,16 @@ inputManager.IsKeyDown = function(keyCode) {
   return inputManager.keyStates[keyCode];
 };
 
+inputManager.IsKeyPressed = function(keyCode) {
+  let result =
+    inputManager.keyStates[keyCode] === true &&
+    inputManager.previousKeyStates[keyCode] === false;
+  return result;
+};
+
 inputManager.downHandler = function(event) {
   var key = window.event ? event.keyCode : event.which;
-
+  console.log(key);
   if (key == 18) event.preventDefault();
   inputManager.realStates[key] = true;
 };
