@@ -163,4 +163,20 @@ function testTiled() {
 
 function renderLayer(layer) {
   console.log("renderLayer " + layer.name);
+  layer.data.forEach(function(tile_idx, i) {
+    if (!tile_idx) {
+      return;
+    }
+    let size = map01.tilewidth;
+    let img_x,
+      img_y,
+      s_x,
+      s_y,
+      tile = map01.tilesets[0];
+    tile_idx--;
+    img_x = (tile_idx % (tile.imagewidth / size)) * size;
+    img_y = ~~(tile_idx / (tile.imagewidth / size)) * size;
+    s_x = (i % layer.width) * size;
+    s_y = ~~(i / layer.width) * size;
+  });
 }
