@@ -1,11 +1,12 @@
 import { Room } from '../engine/room'
 const PIXI = require('pixi.js')
 const inputManager = require('../engine/input')
+const catImage = require('../assets/cat.png')
 
 export default class RoomGame extends Room {
   Init () {
-    // cat = new PIXI.Sprite(PIXI.loader.resources[catImage].texture)
-    // gameScene.addChild(cat)
+    this.cat = new PIXI.Sprite(PIXI.loader.resources[catImage].texture)
+    this.addChild(this.cat)
 
     let style = new PIXI.TextStyle({
       fontFamily: 'Arial',
@@ -34,16 +35,16 @@ export default class RoomGame extends Room {
     }
 
     if (inputManager.IsKeyDown(inputManager.vk_left)) {
-      // cat.x -= 5
+      this.cat.x -= 5
     }
     if (inputManager.IsKeyDown(inputManager.vk_right)) {
-      // cat.x += 5
+      this.cat.x += 5
     }
     if (inputManager.IsKeyDown(inputManager.vk_down)) {
-      // cat.y += 5
+      this.cat.y += 5
     }
     if (inputManager.IsKeyDown(inputManager.vk_up)) {
-      // cat.y -= 5
+      this.cat.y -= 5
     }
   }
 }

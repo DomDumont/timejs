@@ -44,7 +44,7 @@ export default class RoomPause extends Room {
     this.addChild(msgResume)
     this.addChild(msgQuit)
   }
-  Loop () {
+  Loop (deltas) {
     if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
       console.log('resume by esc key')
       //    gameScene.visible = true

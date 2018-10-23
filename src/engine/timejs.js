@@ -5,6 +5,7 @@ const PIXI = require('pixi.js')
 
 class TimeJS {
   constructor () {
+    this.rooms = new Map()
     if (!TimeJS.instance) {
       this.app = new PIXI.Application({
         width: 800, // default: 800
@@ -20,12 +21,13 @@ class TimeJS {
       TimeJS.instance = this
     }
 
+    this.OnLoadedDone = this.OnLoadedDone.bind(this)
     return TimeJS.instance
   }
 
   Init () {
     // load an image and run the `setup` function when it's done
-    PIXI.loader.load(this.OnLoadedDone.bind(this))
+    PIXI.loader.load(this.OnLoadedDone)
 
     inputManager.Init()
   }
@@ -35,16 +37,26 @@ class TimeJS {
 
   OnLoadedDone () {
     // Start the game loop
+    console.log('OnLoadedDone')
+    for (let [key, val] of this.rooms.entries()) {
+      console.debug(key)
+      val.Init()
+    }
+
     this.app.ticker.add(delta => this.Loop(delta))
   }
 
-  AddRoom (roomToAdd) {
+  AddRoom (roomKey, roomToAdd) {
     this.app.stage.addChild(roomToAdd)
-    // this.rooms
+    this.rooms.set(roomKey, roomToAdd)
   }
   Loop (delta) {
     // message.setText(Math.round(app.ticker.FPS))
     inputManager.Update()
+    for (let [key, val] of this.rooms.entries()) {
+      console.debug(key)
+      val.Loop(delta)
+    }
   }
 }
 

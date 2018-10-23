@@ -4,7 +4,7 @@ const PIXI = require('pixi.js')
 const catImage = require('./assets/cat.png')
 
 PIXI.loader.add(catImage)
-timejs.AddRoom(new RoomGame())
+timejs.AddRoom('GameRoom', new RoomGame())
 timejs.Init()
 
 //  app.stage.addChild(gameScene)
