@@ -1,0 +1,54 @@
+const PIXI = require('pixi.js')
+const inputManager = require('./input')
+const Room = require('../engine/room')
+
+export default class RoomPause extends Room {
+  Init () {
+    let style = new PIXI.TextStyle({
+      fontFamily: 'Arial',
+      fontSize: 24,
+      fill: 'white',
+      stroke: '#ff3300',
+      strokeThickness: 4,
+      dropShadow: true,
+      dropShadowColor: '#000000',
+      dropShadowBlur: 4,
+      dropShadowAngle: Math.PI / 6,
+      dropShadowDistance: 6
+    })
+
+    let msgResume = new PIXI.Text('Resume', style)
+    msgResume.position.set(350, 200)
+
+    msgResume.interactive = true
+    msgResume.buttonMode = true
+
+    // Pointers normalize touch and mouse
+    msgResume.on('pointerdown', () => {
+      // pauseScene.visible = false
+      // gameScene.visible = true
+    })
+
+    let msgQuit = new PIXI.Text('Quit', style)
+    msgQuit.position.set(350, 300)
+
+    msgQuit.interactive = true
+    msgQuit.buttonMode = true
+
+    // Pointers normalize touch and mouse
+    msgQuit.on('pointerdown', () => {
+      // pauseScene.visible = false
+      // menuScene.visible = true
+    })
+
+    this.addChild(msgResume)
+    this.addChild(msgQuit)
+  }
+  Loop () {
+    if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
+      console.log('resume by esc key')
+      //    gameScene.visible = true
+      //    pauseScene.visible = false
+    }
+  }
+}
