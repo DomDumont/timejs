@@ -26,7 +26,7 @@ export default class RoomGame extends Room {
     this.addChild(this.message)
   }
 
-  Loop () {
+  Loop (delta) {
     if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
       console.log('pause by esc key')
       // gameScene.visible = false
