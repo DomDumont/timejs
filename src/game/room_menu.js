@@ -1,3 +1,4 @@
+import timejs from '../engine/timejs'
 import { Room } from '../engine/room'
 const PIXI = require('pixi.js')
 export default class RoomMenu extends Room {
@@ -23,6 +24,7 @@ export default class RoomMenu extends Room {
 
     // Pointers normalize touch and mouse
     msgPlay.on('pointerdown', () => {
+      timejs.RoomGoto('GameRoom')
       // menuScene.visible = false
       // gameScene.visible = true
     })
