@@ -10,9 +10,16 @@ inputManager.Init = function () {
   inputManager.keyStates = new Array(256)
   inputManager.previousKeyStates = new Array(256)
   inputManager.realStates = new Array(256)
+
+  for (let i = 0; i < 256; i++) {
+    inputManager.realStates[i] = false
+    inputManager.keyStates[i] = false
+    inputManager.previousKeyStates[i] = false
+  }
 }
 
 inputManager.Update = function () {
+  // console.log('key update ')
   inputManager.previousKeyStates = inputManager.keyStates.slice(0)
   inputManager.keyStates = inputManager.realStates.slice(0)
 }
@@ -31,14 +38,14 @@ inputManager.IsKeyPressed = function (keyCode) {
 inputManager.downHandler = function (event) {
   var key = window.event ? event.keyCode : event.which
   console.log('key = ' + key)
-  if (key == 18) event.preventDefault()
+  event.preventDefault()
   inputManager.realStates[key] = true
 }
 
 inputManager.upHandler = function (event) {
   var key = window.event ? event.keyCode : event.which
-
-  if (key == 18) event.preventDefault()
+  console.log('key up = ' + key)
+  event.preventDefault()
   inputManager.realStates[key] = false
 }
 

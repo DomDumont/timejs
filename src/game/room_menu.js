@@ -25,8 +25,6 @@ export default class RoomMenu extends Room {
     // Pointers normalize touch and mouse
     msgPlay.on('pointerdown', () => {
       timejs.RoomGoto('GameRoom')
-      // menuScene.visible = false
-      // gameScene.visible = true
     })
 
     this.addChild(msgPlay)

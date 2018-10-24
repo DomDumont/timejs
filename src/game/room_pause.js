@@ -1,6 +1,7 @@
+import timejs from '../engine/timejs'
+import { Room } from '../engine/room'
 const PIXI = require('pixi.js')
 const inputManager = require('../engine/input')
-const Room = require('../engine/room')
 
 export default class RoomPause extends Room {
   Init () {
@@ -25,6 +26,7 @@ export default class RoomPause extends Room {
 
     // Pointers normalize touch and mouse
     msgResume.on('pointerdown', () => {
+      timejs.RoomGoto('GameRoom')
       // pauseScene.visible = false
       // gameScene.visible = true
     })
@@ -37,6 +39,7 @@ export default class RoomPause extends Room {
 
     // Pointers normalize touch and mouse
     msgQuit.on('pointerdown', () => {
+      timejs.RoomGoto('MenuRoom')
       // pauseScene.visible = false
       // menuScene.visible = true
     })
@@ -47,6 +50,7 @@ export default class RoomPause extends Room {
   Loop (deltas) {
     if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
       console.log('resume by esc key')
+      timejs.RoomGoto('GameRoom')
       //    gameScene.visible = true
       //    pauseScene.visible = false
     }

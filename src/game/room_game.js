@@ -1,3 +1,4 @@
+import timejs from '../engine/timejs'
 import { Room } from '../engine/room'
 const PIXI = require('pixi.js')
 const inputManager = require('../engine/input')
@@ -29,8 +30,7 @@ export default class RoomGame extends Room {
   Loop (delta) {
     if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
       console.log('pause by esc key')
-      // gameScene.visible = false
-      // pauseScene.visible = true
+      timejs.RoomGoto('PauseRoom')
       return
     }
 

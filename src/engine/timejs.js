@@ -69,10 +69,13 @@ class TimeJS {
   }
   Loop (delta) {
     // message.setText(Math.round(app.ticker.FPS))
-    inputManager.Update()
+
     for (let [key, val] of this.rooms.entries()) {
-      console.debug(key)
-      val.Loop(delta)
+      inputManager.Update()
+      // TODO change this
+      if (val.visible === true) {
+        val.Loop(delta)
+      }
     }
   }
 }
