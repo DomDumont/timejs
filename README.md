@@ -26,6 +26,10 @@ Step 1: program like a pig, as fast as possible, as if you were a freelance on t
 Step 2: Put yourself in the shoes of the guy who has just realized the trickery and who must find a way to arrange
 things to save his company
 
+## Attempt of documentation
+
+https://domdumont.github.io/timejs/
+
 ## Side notes
 
 https://videogamena.me/
