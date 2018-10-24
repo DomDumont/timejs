@@ -1,5 +1,5 @@
 const PIXI = require('pixi.js')
-const inputManager = require('./input')
+const inputManager = require('../engine/input')
 const Room = require('../engine/room')
 
 export default class RoomPause extends Room {
