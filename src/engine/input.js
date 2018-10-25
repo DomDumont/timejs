@@ -29,6 +29,11 @@ inputManager.IsKeyDown = function (keyCode) {
 }
 
 inputManager.IsKeyPressed = function (keyCode) {
+  // console.log(
+  //  inputManager.keyStates[keyCode] +
+  //     ' ' +
+  //     inputManager.previousKeyStates[keyCode]
+  //  )
   let result =
     inputManager.keyStates[keyCode] === true &&
     inputManager.previousKeyStates[keyCode] === false

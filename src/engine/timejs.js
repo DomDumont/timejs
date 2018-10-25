@@ -19,6 +19,8 @@ class TimeJS {
       // Add the canvas that Pixi automatically created for you to the HTML document
       document.body.appendChild(this.app.view)
 
+      this.currentRoomKey = ''
+      this.nextRoomKey = ''
       TimeJS.instance = this
     }
 
@@ -62,18 +64,25 @@ class TimeJS {
    * @param {string} roomKey - The Room name
    */
   RoomGoto (roomKey) {
-    for (let [key, val] of this.rooms.entries()) {
-      val.visible = false
+    this.nextRoomKey = roomKey
+  }
+
+  CheckRoomTransition () {
+    if (this.currentRoomKey !== this.nextRoomKey) {
+      this.currentRoomKey = this.nextRoomKey
+      for (let [, val] of this.rooms.entries()) {
+        val.visible = false
+      }
+      this.rooms.get(this.currentRoomKey).visible = true
     }
-    this.rooms.get(roomKey).visible = true
   }
   Loop (delta) {
     // message.setText(Math.round(app.ticker.FPS))
-
+    inputManager.Update()
+    this.CheckRoomTransition()
     for (let [key, val] of this.rooms.entries()) {
-      inputManager.Update()
       // TODO change this
-      if (val.visible === true) {
+      if (key === this.currentRoomKey) {
         val.Loop(delta)
       }
     }
@@ -81,6 +90,6 @@ class TimeJS {
 }
 
 const instance = new TimeJS()
-Object.freeze(instance)
+// Object.freeze(instance)
 
 export default instance

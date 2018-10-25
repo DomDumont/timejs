@@ -1,7 +1,7 @@
 import timejs from '../engine/timejs'
 import { Room } from '../engine/room'
+import inputManager from '../engine/input'
 const PIXI = require('pixi.js')
-const inputManager = require('../engine/input')
 const catImage = require('../assets/cat.png')
 
 export default class RoomGame extends Room {
