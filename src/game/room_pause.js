@@ -47,7 +47,7 @@ export default class RoomPause extends Room {
     this.addChild(msgResume)
     this.addChild(msgQuit)
   }
-  Update (deltas) {
+  Update (delta) {
     if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
       console.log('resume by esc key')
       timejs.RoomGoto('GameRoom')
