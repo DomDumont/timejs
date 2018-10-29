@@ -4,6 +4,8 @@ import inputManager from '../engine/input'
 const PIXI = require('pixi.js')
 const catImage = require('../assets/cat.png')
 
+const map01 = require('../assets/map01.json')
+
 export default class RoomGame extends Room {
   Init () {
     this.cat = new PIXI.Sprite(PIXI.loader.resources[catImage].texture)
@@ -27,7 +29,7 @@ export default class RoomGame extends Room {
     this.addChild(this.message)
   }
 
-  Loop (delta) {
+  Update (delta) {
     if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
       console.log('pause by esc key')
       timejs.RoomGoto('PauseRoom')

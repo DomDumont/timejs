@@ -1,8 +1,6 @@
 const inputManager = require('./input')
 const PIXI = require('pixi.js')
 
-// const map01 = require('./assets/map01.json')
-
 /** Class representing TimeJS itself */
 class TimeJS {
   constructor () {
@@ -46,7 +44,7 @@ class TimeJS {
       val.Init()
     }
 
-    this.app.ticker.add(delta => this.Loop(delta))
+    this.app.ticker.add(delta => this.Update(delta))
   }
 
   /**
@@ -76,14 +74,14 @@ class TimeJS {
       this.rooms.get(this.currentRoomKey).visible = true
     }
   }
-  Loop (delta) {
+  Update (delta) {
     // message.setText(Math.round(app.ticker.FPS))
     inputManager.Update()
     this.CheckRoomTransition()
     for (let [key, val] of this.rooms.entries()) {
       // TODO change this
       if (key === this.currentRoomKey) {
-        val.Loop(delta)
+        val.Update(delta)
       }
     }
   }

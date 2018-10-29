@@ -29,4 +29,6 @@ export default class RoomMenu extends Room {
 
     this.addChild(msgPlay)
   }
+
+  Update (delta) {}
 }

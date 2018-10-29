@@ -5,5 +5,6 @@ const PIXI = require('pixi.js')
 export class Room extends PIXI.Container {
   /** This is a description of the Init function. */
   Init () {}
-  Loop (delta) {}
+  /** This is a description of the Update function. */
+  Update (delta) {}
 }
