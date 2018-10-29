@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: room.js</title>
+    <title>JSDoc: Source: tilelayer.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: room.js</h1>
+    <h1 class="page-title">Source: tilelayer.js</h1>
 
     
 
@@ -27,14 +27,51 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const PIXI = require('pixi.js')
-/** This is a description of the Room
- * @tutorial room-tutorial
+/** This is a description of the TileLayer
  */
-export class Room extends PIXI.Container {
-  /** This is a description of the Init function. */
-  Init () {}
-  /** This is a description of the Update function. */
-  Update (delta) {}
+export class TileLayer extends PIXI.Container {
+  constructor (jsonObject) {
+    super()
+    this.jsonObject = jsonObject
+  }
+  Init () {
+    this.graphics = new PIXI.Graphics()
+
+    let style = new PIXI.TextStyle({
+      fontFamily: 'Arial',
+      fontSize: 24,
+      fill: 'white',
+      stroke: '#ff3300',
+      strokeThickness: 4,
+      dropShadow: true,
+      dropShadowColor: '#000000',
+      dropShadowBlur: 4,
+      dropShadowAngle: Math.PI / 6,
+      dropShadowDistance: 6
+    })
+
+    let message = new PIXI.Text(this.jsonObject.name, style)
+    message.position.set(200, 200)
+    this.addChild(message)
+
+    if (this.jsonObject.objects !== undefined) {
+      console.log('this is an object layer')
+      this.jsonObject.objects.forEach(tempObject => {
+        console.log(tempObject)
+        this.graphics.beginFill(0xff700b, 1)
+        this.graphics.drawRect(
+          tempObject.x,
+          tempObject.y,
+          tempObject.width,
+          tempObject.height
+        )
+        this.addChild(this.graphics)
+        this.graphics.endFill()
+      })
+    }
+
+    this.addChild(this.graphics)
+  }
 }
 </code></pre>
         </article>

@@ -1,6 +1,7 @@
 import timejs from '../engine/timejs'
 import { Room } from '../engine/room'
 import inputManager from '../engine/input'
+import { TileMap } from '../engine/tilemap'
 const PIXI = require('pixi.js')
 const catImage = require('../assets/cat.png')
 
@@ -27,6 +28,10 @@ export default class RoomGame extends Room {
     this.message = new PIXI.Text('Hello Pixi!', style)
     // message.position.set(54, 96);
     this.addChild(this.message)
+
+    let tm = new TileMap(map01)
+    tm.Init()
+    this.addChild(tm)
   }
 
   Update (delta) {
