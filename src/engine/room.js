@@ -5,10 +5,18 @@ const PIXI = require('pixi.js')
 export class Room extends PIXI.Container {
   constructor () {
     super()
-    this.gaos = {}
+    this.gaos = []
   }
   /** This is a description of the Init function. */
-  Init () {}
+  Init () {
+    this.gaos.forEach(element => {
+      element.Init()
+    })
+  }
   /** This is a description of the Update function. */
-  Update (delta) {}
+  Update (delta) {
+    this.gaos.forEach(element => {
+      element.Update(delta)
+    })
+  }
 }

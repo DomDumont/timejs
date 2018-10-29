@@ -2,16 +2,14 @@ import timejs from '../../engine/timejs'
 import { Room } from '../../engine/room'
 import inputManager from '../../engine/input'
 import { TileMap } from '../../engine/tilemap'
+import ObjectCollisions from '../objects/object_collisions'
+import ObjectPlayer from '../objects/object_player'
 const PIXI = require('pixi.js')
-const catImage = require('../../assets/cat.png')
 
 const map01 = require('../../assets/map01.json')
 
 export default class RoomGame extends Room {
   Init () {
-    this.cat = new PIXI.Sprite(PIXI.loader.resources[catImage].texture)
-    this.addChild(this.cat)
-
     let style = new PIXI.TextStyle({
       fontFamily: 'Arial',
       fontSize: 24,
@@ -33,32 +31,24 @@ export default class RoomGame extends Room {
       console.dir(obj)
       switch (obj.type) {
         case 'COLLISIONS':
+          this.gaos.push(new ObjectCollisions(this))
+          break
+        case 'PLAYER':
+          this.gaos.push(new ObjectPlayer(this))
           break
       }
     })
     tileMap.Init()
     this.addChild(tileMap)
+    super.Init()
   }
 
   Update (delta) {
     if (inputManager.IsKeyPressed(inputManager.vk_escape)) {
       console.log('pause by esc key')
       timejs.RoomGoto('PauseRoom')
-      return
     }
-
-    if (inputManager.IsKeyDown(inputManager.vk_left)) {
-      this.cat.x -= 5
-    }
-    if (inputManager.IsKeyDown(inputManager.vk_right)) {
-      this.cat.x += 5
-    }
-    if (inputManager.IsKeyDown(inputManager.vk_down)) {
-      this.cat.y += 5
-    }
-    if (inputManager.IsKeyDown(inputManager.vk_up)) {
-      this.cat.y -= 5
-    }
+    super.Update(delta)
   }
 }
 
