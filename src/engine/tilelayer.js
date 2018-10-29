@@ -2,9 +2,10 @@ const PIXI = require('pixi.js')
 /** This is a description of the TileLayer
  */
 export class TileLayer extends PIXI.Container {
-  constructor (jsonObject) {
+  constructor (jsonObject, loadCallback) {
     super()
     this.jsonObject = jsonObject
+    this.loadCallback = loadCallback
   }
   Init () {
     this.graphics = new PIXI.Graphics()
@@ -29,7 +30,7 @@ export class TileLayer extends PIXI.Container {
     if (this.jsonObject.objects !== undefined) {
       console.log('this is an object layer')
       this.jsonObject.objects.forEach(tempObject => {
-        console.log(tempObject)
+        this.loadCallback(tempObject)
         this.graphics.beginFill(0xff700b, 1)
         this.graphics.drawRect(
           tempObject.x,

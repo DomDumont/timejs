@@ -1,7 +1,7 @@
 import timejs from './engine/timejs'
-import RoomGame from './game/room_game'
-import RoomMenu from './game/room_menu'
-import RoomPause from './game/room_pause'
+import RoomGame from './game/Rooms/room_game'
+import RoomMenu from './game/Rooms/room_menu'
+import RoomPause from './game/Rooms/room_pause'
 const PIXI = require('pixi.js')
 const catImage = require('./assets/cat.png')
 

@@ -1,11 +1,11 @@
-import timejs from '../engine/timejs'
-import { Room } from '../engine/room'
-import inputManager from '../engine/input'
-import { TileMap } from '../engine/tilemap'
+import timejs from '../../engine/timejs'
+import { Room } from '../../engine/room'
+import inputManager from '../../engine/input'
+import { TileMap } from '../../engine/tilemap'
 const PIXI = require('pixi.js')
-const catImage = require('../assets/cat.png')
+const catImage = require('../../assets/cat.png')
 
-const map01 = require('../assets/map01.json')
+const map01 = require('../../assets/map01.json')
 
 export default class RoomGame extends Room {
   Init () {
@@ -29,9 +29,15 @@ export default class RoomGame extends Room {
     // message.position.set(54, 96);
     this.addChild(this.message)
 
-    let tm = new TileMap(map01)
-    tm.Init()
-    this.addChild(tm)
+    let tileMap = new TileMap(map01, obj => {
+      console.dir(obj)
+      switch (obj.type) {
+        case 'COLLISIONS':
+          break
+      }
+    })
+    tileMap.Init()
+    this.addChild(tileMap)
   }
 
   Update (delta) {

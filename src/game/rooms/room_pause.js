@@ -1,7 +1,7 @@
-import timejs from '../engine/timejs'
-import { Room } from '../engine/room'
+import timejs from '../../engine/timejs'
+import { Room } from '../../engine/room'
 const PIXI = require('pixi.js')
-const inputManager = require('../engine/input')
+const inputManager = require('../../engine/input')
 
 export default class RoomPause extends Room {
   Init () {

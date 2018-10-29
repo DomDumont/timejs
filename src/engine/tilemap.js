@@ -4,10 +4,11 @@ const PIXI = require('pixi.js')
 /** This is a description of the TileMap
  */
 export class TileMap extends PIXI.Container {
-  constructor (jsonObject) {
+  constructor (jsonObject, loadCallback) {
     super()
     this.jsonObject = jsonObject
     this.layers = {}
+    this.loadCallback = loadCallback
   }
 
   Init () {
@@ -20,7 +21,7 @@ export class TileMap extends PIXI.Container {
 
     this.jsonObject.layers.forEach(layer => {
       console.log('renderLayer ' + layer.name)
-      this.layers[layer.name] = new TileLayer(layer)
+      this.layers[layer.name] = new TileLayer(layer, this.loadCallback)
       this.layers[layer.name].Init()
       this.addChild(this.layers[layer.name])
     })

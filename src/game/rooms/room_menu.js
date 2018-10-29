@@ -1,5 +1,5 @@
-import timejs from '../engine/timejs'
-import { Room } from '../engine/room'
+import timejs from '../../engine/timejs'
+import { Room } from '../../engine/room'
 const PIXI = require('pixi.js')
 export default class RoomMenu extends Room {
   Init () {
