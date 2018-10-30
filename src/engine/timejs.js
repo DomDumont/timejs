@@ -1,4 +1,5 @@
 import inputManager from './input'
+import utils from '../engine/utils'
 const PIXI = require('pixi.js')
 
 /** Class representing TimeJS itself */
@@ -84,6 +85,20 @@ class TimeJS {
         val.Update(delta)
       }
     }
+  }
+
+  PlaceMeeting (x, y, classNameToCheck) {
+    let gaos = this.rooms.get(this.currentRoomKey).gaos
+    for (let i = 0; i < gaos.length; i++) {
+      let element = gaos[i]
+      if (classNameToCheck.name === element.constructor.name) {
+        if (utils.pointInRectangle(x, y, element) === true) {
+          return true
+        }
+      }
+    }
+
+    return false
   }
 }
 

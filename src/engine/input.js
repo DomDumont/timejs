@@ -42,14 +42,14 @@ inputManager.IsKeyPressed = function (keyCode) {
 
 inputManager.downHandler = function (event) {
   var key = window.event ? event.keyCode : event.which
-  console.log('key = ' + key)
+  // console.log('key = ' + key)
   event.preventDefault()
   inputManager.realStates[key] = true
 }
 
 inputManager.upHandler = function (event) {
   var key = window.event ? event.keyCode : event.which
-  console.log('key up = ' + key)
+  // console.log('key up = ' + key)
   event.preventDefault()
   inputManager.realStates[key] = false
 }

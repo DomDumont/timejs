@@ -1,5 +1,13 @@
+const PIXI = require('pixi.js')
 var utils = {}
 
+utils.pointInRectangle = function (x, y, r1) {
+  if (x >= r1.x && x <= r1.x + r1.width && y >= r1.y && y <= r1.y + r1.height) {
+    return true
+  } else {
+    return false
+  }
+}
 utils.hitTestRectangle = function (r1, r2) {
   // Define the variables we'll need to calculate
   let hit, combinedHalfWidths, combinedHalfHeights, vx, vy
