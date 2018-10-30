@@ -1,6 +1,6 @@
 import { GameObject } from '../../engine/gameobject'
 import inputManager from '../../engine/input'
-import timejs from '../../engine/timejs'
+
 import ObjectCollisions from './object_collisions'
 
 const PIXI = require('pixi.js')
@@ -42,16 +42,13 @@ export default class ObjectPlayer extends GameObject {
       this.moveY -= this.speed
     }
 
-    this.xx = this.x + this.width / 2
-    this.yy = this.y + this.height / 2
-
     if (this.moveX) {
-      if (timejs.PlaceMeeting(this.x + this.moveX, this.y, ObjectCollisions)) {
+      if (this.PlaceMeeting(this.x + this.moveX, this.y, ObjectCollisions)) {
         console.log('!!!! YESSSS')
         for (let i = 0; i < Math.abs(this.moveX); i++) {
           if (
-            timejs.PlaceMeeting(
-              this.x + this.moveX,
+            this.PlaceMeeting(
+              this.x + Math.sign(this.moveX),
               this.y,
               ObjectCollisions
             ) === false
@@ -64,12 +61,12 @@ export default class ObjectPlayer extends GameObject {
     }
 
     if (this.moveY) {
-      if (timejs.PlaceMeeting(this.x, this.y + this.moveY, ObjectCollisions)) {
+      if (this.PlaceMeeting(this.x, this.y + this.moveY, ObjectCollisions)) {
         for (let i = 0; i < Math.abs(this.moveY); i++) {
           if (
-            timejs.PlaceMeeting(
+            this.PlaceMeeting(
               this.x,
-              this.y + this.moveY,
+              this.y + Math.sign(this.moveY),
               ObjectCollisions
             ) === false
           ) {

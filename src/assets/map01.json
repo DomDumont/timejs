@@ -19,61 +19,6 @@
          "objects":[
                 {
                  "height":80,
-                 "id":26,
-                 "name":"",
-                 "rotation":0,
-                 "type":"COLLISIONS",
-                 "visible":true,
-                 "width":16,
-                 "x":32,
-                 "y":32
-                }, 
-                {
-                 "height":16,
-                 "id":27,
-                 "name":"",
-                 "rotation":0,
-                 "type":"COLLISIONS",
-                 "visible":true,
-                 "width":80,
-                 "x":64,
-                 "y":32
-                }, 
-                {
-                 "height":16,
-                 "id":30,
-                 "name":"",
-                 "rotation":0,
-                 "type":"COLLISIONS",
-                 "visible":true,
-                 "width":112,
-                 "x":48,
-                 "y":128
-                }, 
-                {
-                 "height":80,
-                 "id":34,
-                 "name":"",
-                 "rotation":0,
-                 "type":"COLLISIONS",
-                 "visible":true,
-                 "width":16,
-                 "x":32,
-                 "y":160
-                }, 
-                {
-                 "height":32,
-                 "id":36,
-                 "name":"",
-                 "rotation":0,
-                 "type":"COLLISIONS",
-                 "visible":true,
-                 "width":112,
-                 "x":176,
-                 "y":16
-                }, 
-                {
-                 "height":80,
                  "id":38,
                  "name":"",
                  "rotation":0,
@@ -84,15 +29,15 @@
                  "y":80
                 }, 
                 {
-                 "height":16,
-                 "id":41,
+                 "height":32,
+                 "id":42,
                  "name":"",
                  "rotation":0,
                  "type":"PLAYER",
                  "visible":true,
-                 "width":16,
+                 "width":32,
                  "x":96,
-                 "y":80
+                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -100,7 +45,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":42,
+ "nextobjectid":43,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.03.21",
