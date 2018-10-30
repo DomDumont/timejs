@@ -4,18 +4,22 @@ import inputManager from '../../engine/input'
 import ObjectCollisions from './object_collisions'
 
 const PIXI = require('pixi.js')
-// const catImage = require('../../assets/cat.png')
+const femaleBody = require('../../assets/female-body.png')
 
 export default class ObjectPlayer extends GameObject {
   Init () {
-    // this.cat = new PIXI.Sprite(PIXI.loader.resources[catImage].texture)
-    // this.addChild(this.cat)
-    this.graphics = new PIXI.Graphics()
-    this.graphics.beginFill(0xff7070, 1)
-    this.graphics.drawRect(0, 0, this.jsonObject.width, this.jsonObject.height)
-    this.graphics.endFill()
+    let texture = PIXI.loader.resources[femaleBody].texture
+    texture.frame = new PIXI.Rectangle(0, 3 * 64, 64, 64)
+    this.femaleBody = new PIXI.Sprite(texture)
 
-    this.addChild(this.graphics)
+    this.addChild(this.femaleBody)
+
+    // this.graphics = new PIXI.Graphics()
+    // this.graphics.beginFill(0xff7070, 1)
+    // this.graphics.drawRect(0, 0, this.jsonObject.width, this.jsonObject.height)
+    // this.graphics.endFill()
+
+    // this.addChild(this.graphics)
 
     this.moveX = 0
     this.moveY = 0

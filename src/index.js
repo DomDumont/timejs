@@ -4,9 +4,9 @@ import RoomMenu from './game/Rooms/room_menu'
 import RoomPause from './game/Rooms/room_pause'
 const PIXI = require('pixi.js')
 
-const catImage = require('./assets/cat.png')
+const femaleBody = require('./assets/female-body.png')
 
-PIXI.loader.add(catImage)
+PIXI.loader.add(femaleBody)
 timejs.AddRoom('GameRoom', new RoomGame())
 timejs.AddRoom('MenuRoom', new RoomMenu())
 timejs.AddRoom('PauseRoom', new RoomPause())
