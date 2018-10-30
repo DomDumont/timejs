@@ -9,8 +9,20 @@ const femaleBody = require('../../assets/female-body.png')
 export default class ObjectPlayer extends GameObject {
   Init () {
     let texture = PIXI.loader.resources[femaleBody].texture
-    texture.frame = new PIXI.Rectangle(0, 3 * 64, 64, 64)
-    this.femaleBody = new PIXI.Sprite(texture)
+    let textureArray = []
+
+    for (let i = 0; i < 6; i++) {
+      let tempTexture = new PIXI.Texture(
+        texture,
+        new PIXI.Rectangle(i * 64, 9 * 64, 64, 64)
+      )
+      textureArray.push(tempTexture)
+    }
+
+    this.femaleBody = new PIXI.extras.AnimatedSprite(textureArray)
+    // this.femaleBody.anchor.set(0.5)
+    this.femaleBody.animationSpeed = 0.1
+    this.femaleBody.play()
 
     this.addChild(this.femaleBody)
 
