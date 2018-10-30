@@ -8,8 +8,6 @@ export class TileLayer extends PIXI.Container {
     this.loadCallback = loadCallback
   }
   Init () {
-    this.graphics = new PIXI.Graphics()
-
     let style = new PIXI.TextStyle({
       fontFamily: 'Arial',
       fontSize: 24,
@@ -31,18 +29,7 @@ export class TileLayer extends PIXI.Container {
       console.log('this is an object layer')
       this.jsonObject.objects.forEach(tempObject => {
         this.loadCallback(tempObject)
-        this.graphics.beginFill(0xff700b, 1)
-        this.graphics.drawRect(
-          tempObject.x,
-          tempObject.y,
-          tempObject.width,
-          tempObject.height
-        )
-        this.addChild(this.graphics)
-        this.graphics.endFill()
       })
     }
-
-    this.addChild(this.graphics)
   }
 }

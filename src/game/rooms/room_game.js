@@ -31,10 +31,10 @@ export default class RoomGame extends Room {
       console.dir(obj)
       switch (obj.type) {
         case 'COLLISIONS':
-          this.gaos.push(new ObjectCollisions(this))
+          this.AddGAO(new ObjectCollisions(this, obj))
           break
         case 'PLAYER':
-          this.gaos.push(new ObjectPlayer(this))
+          this.AddGAO(new ObjectPlayer(this, obj))
           break
       }
     })

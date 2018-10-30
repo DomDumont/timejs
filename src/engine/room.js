@@ -19,4 +19,9 @@ export class Room extends PIXI.Container {
       element.Update(delta)
     })
   }
+
+  AddGAO (newObject) {
+    this.gaos.push(newObject)
+    this.addChild(newObject)
+  }
 }

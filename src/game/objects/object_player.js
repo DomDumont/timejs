@@ -7,7 +7,7 @@ const catImage = require('../../assets/cat.png')
 export default class ObjectPlayer extends GameObject {
   Init () {
     this.cat = new PIXI.Sprite(PIXI.loader.resources[catImage].texture)
-    this.parent.addChild(this.cat)
+    this.addChild(this.cat)
   }
 
   Update (delta) {
