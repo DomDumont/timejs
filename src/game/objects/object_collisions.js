@@ -10,7 +10,8 @@ export default class ObjectCollisions extends GameObject {
       this.jsonObject.width,
       this.jsonObject.height
     )
-    this.addChild(this.graphics)
     this.graphics.endFill()
+
+    this.addChild(this.graphics)
   }
 }

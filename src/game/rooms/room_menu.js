@@ -1,23 +1,13 @@
 import timejs from '../../engine/timejs'
 import { Room } from '../../engine/room'
+import utils from '../../engine/utils'
 const PIXI = require('pixi.js')
+
 export default class RoomMenu extends Room {
   Init () {
     // scenes creation
-    let style = new PIXI.TextStyle({
-      fontFamily: 'Arial',
-      fontSize: 24,
-      fill: 'white',
-      stroke: '#ff3300',
-      strokeThickness: 4,
-      dropShadow: true,
-      dropShadowColor: '#000000',
-      dropShadowBlur: 4,
-      dropShadowAngle: Math.PI / 6,
-      dropShadowDistance: 6
-    })
 
-    let msgPlay = new PIXI.Text('Play', style)
+    let msgPlay = new PIXI.Text('Play', utils.style1)
     msgPlay.position.set(350, 200)
     msgPlay.interactive = true
     msgPlay.buttonMode = true

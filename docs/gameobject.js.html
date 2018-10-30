@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Tutorial: room-tutorial</title>
+    <title>JSDoc: Source: gameobject.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,21 +17,34 @@
 
 <div id="main">
 
-    <h1 class="page-title">Tutorial: room-tutorial</h1>
+    <h1 class="page-title">Source: gameobject.js</h1>
 
-    <section>
-
-<header>
     
 
-    <h2>room-tutorial</h2>
-</header>
 
-<article>
-    <h2>Room tutorial</h2>
-</article>
 
-</section>
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import PIXI from 'pixi.js'
+
+export class GameObject extends PIXI.Container {
+  constructor (parent, jsonObject) {
+    super()
+    this.parent = parent
+    this.jsonObject = jsonObject
+  }
+  /** This is a description of the Init function. */
+  Init () {}
+  /** This is a description of the Update function. */
+  Update (delta) {}
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
 
 </div>
 

@@ -4,26 +4,14 @@ import inputManager from '../../engine/input'
 import { TileMap } from '../../engine/tilemap'
 import ObjectCollisions from '../objects/object_collisions'
 import ObjectPlayer from '../objects/object_player'
+import utils from '../../engine/utils'
 const PIXI = require('pixi.js')
 
 const map01 = require('../../assets/map01.json')
 
 export default class RoomGame extends Room {
   Init () {
-    let style = new PIXI.TextStyle({
-      fontFamily: 'Arial',
-      fontSize: 24,
-      fill: 'white',
-      stroke: '#ff3300',
-      strokeThickness: 4,
-      dropShadow: true,
-      dropShadowColor: '#000000',
-      dropShadowBlur: 4,
-      dropShadowAngle: Math.PI / 6,
-      dropShadowDistance: 6
-    })
-
-    this.message = new PIXI.Text('Hello Pixi!', style)
+    this.message = new PIXI.Text('Hello Pixi!', utils.style1)
     // message.position.set(54, 96);
     this.addChild(this.message)
 

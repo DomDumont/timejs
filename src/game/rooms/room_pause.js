@@ -1,26 +1,13 @@
 import timejs from '../../engine/timejs'
 import { Room } from '../../engine/room'
+import inputManager from '../../engine/input'
+import utils from '../../engine/utils'
 const PIXI = require('pixi.js')
-const inputManager = require('../../engine/input')
-
 export default class RoomPause extends Room {
   Init () {
-    let style = new PIXI.TextStyle({
-      fontFamily: 'Arial',
-      fontSize: 24,
-      fill: 'white',
-      stroke: '#ff3300',
-      strokeThickness: 4,
-      dropShadow: true,
-      dropShadowColor: '#000000',
-      dropShadowBlur: 4,
-      dropShadowAngle: Math.PI / 6,
-      dropShadowDistance: 6
-    })
+    let msgResume = new PIXI.Text('Resume', utils.style1)
 
-    let msgResume = new PIXI.Text('Resume', style)
     msgResume.position.set(350, 200)
-
     msgResume.interactive = true
     msgResume.buttonMode = true
 
@@ -31,7 +18,7 @@ export default class RoomPause extends Room {
       // gameScene.visible = true
     })
 
-    let msgQuit = new PIXI.Text('Quit', style)
+    let msgQuit = new PIXI.Text('Quit', utils.style1)
     msgQuit.position.set(350, 300)
 
     msgQuit.interactive = true

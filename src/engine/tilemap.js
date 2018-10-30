@@ -1,6 +1,7 @@
 import { TileLayer } from './tilelayer'
 
 const PIXI = require('pixi.js')
+
 /** This is a description of the TileMap
  */
 export class TileMap extends PIXI.Container {
@@ -16,8 +17,8 @@ export class TileMap extends PIXI.Container {
     this.graphics.lineStyle(2, 0x0000ff, 1)
     this.graphics.beginFill(0xff700b, 1)
     this.graphics.drawRect(50, 250, 250, 250)
-    // this.addChild(this.graphics)
     this.graphics.endFill()
+    // this.addChild(this.graphics)
 
     this.jsonObject.layers.forEach(layer => {
       console.log('renderLayer ' + layer.name)

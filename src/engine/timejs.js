@@ -1,4 +1,4 @@
-const inputManager = require('./input')
+import inputManager from './input'
 const PIXI = require('pixi.js')
 
 /** Class representing TimeJS itself */
