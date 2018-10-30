@@ -13,7 +13,7 @@ export default class RoomGame extends Room {
   Init () {
     this.message = new PIXI.Text('Hello Pixi!', utils.style1)
     // message.position.set(54, 96);
-    this.addChild(this.message)
+    // this.addChild(this.message)
 
     let tileMap = new TileMap(map01, obj => {
       console.dir(obj)

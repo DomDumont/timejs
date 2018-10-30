@@ -10,8 +10,8 @@ export class TileLayer extends PIXI.Container {
   }
   Init () {
     let message = new PIXI.Text(this.jsonObject.name, utils.style1)
-    message.position.set(200, 200)
-    this.addChild(message)
+    // message.position.set(200, 200)
+    // this.addChild(message)
 
     if (this.jsonObject.objects !== undefined) {
       console.log('this is an object layer')
