@@ -5,10 +5,12 @@ import RoomPause from './game/Rooms/room_pause'
 const PIXI = require('pixi.js')
 
 const femaleBody = require('./assets/female-body.png')
+const tileTerrain = require('./assets/spr_tile_terrain.png')
 
 PIXI.loader.add(femaleBody)
+PIXI.loader.add(tileTerrain)
 timejs.AddRoom('GameRoom', new RoomGame())
 timejs.AddRoom('MenuRoom', new RoomMenu())
 timejs.AddRoom('PauseRoom', new RoomPause())
 timejs.Init()
-timejs.RoomGoto('MenuRoom')
+timejs.RoomGoto('GameRoom')

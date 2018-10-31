@@ -13,6 +13,12 @@ export class TileMap extends PIXI.Container {
   }
 
   Init () {
+    console.log(this.jsonObject.tilesets[0].image)
+    this.imageWidth = this.jsonObject.tilesets[0].imagewidth
+    this.imageHeight = this.jsonObject.tilesets[0].imageheight
+    this.tileWidth = this.jsonObject.tilesets[0].tilewidth
+    this.tileHeight = this.jsonObject.tilesets[0].tileheight
+
     this.graphics = new PIXI.Graphics()
     this.graphics.lineStyle(2, 0x0000ff, 1)
     this.graphics.beginFill(0xff700b, 1)
@@ -22,7 +28,7 @@ export class TileMap extends PIXI.Container {
 
     this.jsonObject.layers.forEach(layer => {
       console.log('renderLayer ' + layer.name)
-      this.layers[layer.name] = new TileLayer(layer, this.loadCallback)
+      this.layers[layer.name] = new TileLayer(this, layer, this.loadCallback)
       this.layers[layer.name].Init()
       this.addChild(this.layers[layer.name])
     })

@@ -3,8 +3,9 @@ const PIXI = require('pixi.js')
 /** This is a description of the TileLayer
  */
 export class TileLayer extends PIXI.Container {
-  constructor (jsonObject, loadCallback) {
+  constructor (parent, jsonObject, loadCallback) {
     super()
+    this.parent = parent
     this.jsonObject = jsonObject
     this.loadCallback = loadCallback
   }
@@ -17,6 +18,20 @@ export class TileLayer extends PIXI.Container {
       console.log('this is an object layer')
       this.jsonObject.objects.forEach(tempObject => {
         this.loadCallback(tempObject)
+      })
+    }
+    // Load sprites
+    if (this.jsonObject.data !== undefined) {
+      this.jsonObject.data.forEach((tileIdx, i) => {
+        if (!tileIdx) {
+        }
+        let imgX =
+          (tileIdx % (this.parent.imageWidth / this.parent.tileWidth)) *
+          this.parent.tileWidth
+        let imgY =
+          ~~(tileIdx / (this.parent.imageHeight / this.parent.tileHeight)) *
+          this.parent.tileHeight
+        console.log(imgX + ' ' + imgY)
       })
     }
   }
