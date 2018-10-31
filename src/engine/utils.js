@@ -15,17 +15,28 @@ utils.hitTestRectangle = function (r1, r2) {
   // hit will determine whether there's a collision
   hit = false
 
+  let hitBox1
+  let hitBox2
+
+  if (r1.hitArea) {
+    hitBox1 = r1.hitArea
+    // console.log('hitArea found')
+  } else hitBox1 = r1.getLocalBounds()
+
+  if (r2.hitArea) hitBox2 = r2.hitArea
+  else hitBox2 = r2.getLocalBounds()
+
   // Find the center points of each sprite
-  r1.centerX = r1.x + r1.width / 2
-  r1.centerY = r1.y + r1.height / 2
-  r2.centerX = r2.x + r2.width / 2
-  r2.centerY = r2.y + r2.height / 2
+  r1.centerX = r1.x + hitBox1.x + hitBox1.width / 2
+  r1.centerY = r1.y + hitBox1.y + hitBox1.height / 2
+  r2.centerX = r2.x + hitBox2.x + hitBox2.width / 2
+  r2.centerY = r2.y + hitBox2.y + hitBox2.height / 2
 
   // Find the half-widths and half-heights of each sprite
-  r1.halfWidth = r1.width / 2
-  r1.halfHeight = r1.height / 2
-  r2.halfWidth = r2.width / 2
-  r2.halfHeight = r2.height / 2
+  r1.halfWidth = hitBox1.width / 2
+  r1.halfHeight = hitBox1.height / 2
+  r2.halfWidth = hitBox2.width / 2
+  r2.halfHeight = hitBox2.height / 2
 
   // Calculate the distance vector between the sprites
   vx = r1.centerX - r2.centerX

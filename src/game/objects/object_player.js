@@ -27,6 +27,18 @@ export default class ObjectPlayer extends GameObject {
 
     this.addChild(this.femaleBody)
 
+    let tempHitArea = new PIXI.Rectangle(17, 54, 30, 10)
+    this.hitArea = tempHitArea
+
+    let toto = this.hitArea
+    var graphics = new PIXI.Graphics()
+    // graphics.beginFill(0xffff00)
+    // set the line style to have a width of 5 and set the color to red
+    graphics.lineStyle(1, 0xffff00)
+    // draw a rectangle
+    graphics.drawRect(toto.x, toto.y, toto.width, toto.height)
+    this.addChild(graphics)
+
     // this.graphics = new PIXI.Graphics()
     // this.graphics.beginFill(0xff7070, 1)
     // this.graphics.drawRect(0, 0, this.jsonObject.width, this.jsonObject.height)
