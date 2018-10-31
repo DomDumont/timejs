@@ -1,6 +1,7 @@
 import { TileLayer } from './tilelayer'
 
 const PIXI = require('pixi.js')
+const tileTerrain = require('../assets/spr_tile_terrain.png')
 
 /** This is a description of the TileMap
  */
@@ -13,11 +14,13 @@ export class TileMap extends PIXI.Container {
   }
 
   Init () {
-    console.log(this.jsonObject.tilesets[0].image)
     this.imageWidth = this.jsonObject.tilesets[0].imagewidth
     this.imageHeight = this.jsonObject.tilesets[0].imageheight
     this.tileWidth = this.jsonObject.tilesets[0].tilewidth
     this.tileHeight = this.jsonObject.tilesets[0].tileheight
+
+    console.log(this.jsonObject.tilesets[0].image) // TODO Change this
+    this.texture = PIXI.loader.resources[tileTerrain].texture // TODO Change this
 
     this.graphics = new PIXI.Graphics()
     this.graphics.lineStyle(2, 0x0000ff, 1)
@@ -30,6 +33,7 @@ export class TileMap extends PIXI.Container {
       console.log('renderLayer ' + layer.name)
       this.layers[layer.name] = new TileLayer(this, layer, this.loadCallback)
       this.layers[layer.name].Init()
+      console.log('addchild du tile ' + layer.name)
       this.addChild(this.layers[layer.name])
     })
   }

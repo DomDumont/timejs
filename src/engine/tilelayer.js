@@ -24,14 +24,35 @@ export class TileLayer extends PIXI.Container {
     if (this.jsonObject.data !== undefined) {
       this.jsonObject.data.forEach((tileIdx, i) => {
         if (!tileIdx) {
+          return
         }
+        tileIdx = tileIdx - 1
         let imgX =
           (tileIdx % (this.parent.imageWidth / this.parent.tileWidth)) *
           this.parent.tileWidth
         let imgY =
           ~~(tileIdx / (this.parent.imageHeight / this.parent.tileHeight)) *
           this.parent.tileHeight
-        console.log(imgX + ' ' + imgY)
+
+        let destX = (i % this.jsonObject.width) * this.parent.tileWidth
+        let destY = ~~(i / this.jsonObject.width) * this.parent.tileWidth
+
+        let tempTexture = new PIXI.Texture(
+          this.parent.texture,
+          new PIXI.Rectangle(
+            imgX,
+            imgY,
+            this.parent.tileWidth,
+            this.parent.tileWidth
+          )
+        )
+
+        let tempSprite = new PIXI.Sprite(tempTexture)
+        tempSprite.x = destX
+        tempSprite.y = destY
+        this.addChild(tempSprite)
+
+        // console.log(imgX + ' ' + imgY)
       })
     }
   }
