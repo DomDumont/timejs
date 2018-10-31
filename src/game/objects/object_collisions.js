@@ -1,5 +1,6 @@
 import timejs from '../../engine/timejs'
 import { GameObject } from '../../engine/gameobject'
+const PIXI = require('pixi.js')
 
 export default class ObjectCollisions extends GameObject {
   Init () {
