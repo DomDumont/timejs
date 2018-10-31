@@ -1,6 +1,7 @@
 import inputManager from './input'
 // import utils from '../engine/utils'
 const PIXI = require('pixi.js')
+require('./pixi-layers')
 
 /** Class representing TimeJS itself */
 class TimeJS {
@@ -14,6 +15,14 @@ class TimeJS {
         transparent: false, // default: false
         resolution: 1 // default: 1
       })
+
+      this.app.stage = new PIXI.display.Stage()
+      this.app.stage.group.enableSort = true
+
+      this.group0 = new PIXI.display.Group(0, false)
+      this.group1 = new PIXI.display.Group(1, false)
+      this.app.stage.addChild(new PIXI.display.Layer(this.group0))
+      this.app.stage.addChild(new PIXI.display.Layer(this.group1))
 
       // Add the canvas that Pixi automatically created for you to the HTML document
       document.body.appendChild(this.app.view)

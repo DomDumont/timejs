@@ -1,3 +1,4 @@
+import timejs from '../../engine/timejs'
 import { GameObject } from '../../engine/gameobject'
 
 export default class ObjectCollisions extends GameObject {
@@ -6,7 +7,7 @@ export default class ObjectCollisions extends GameObject {
     this.graphics.beginFill(0xff700b, 1)
     this.graphics.drawRect(0, 0, this.jsonObject.width, this.jsonObject.height)
     this.graphics.endFill()
-
+    this.graphics.parentGroup = timejs.group1
     this.addChild(this.graphics)
   }
 }
