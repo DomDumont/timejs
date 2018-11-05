@@ -1,4 +1,5 @@
 import inputManager from './input'
+import { Camera } from './camera'
 // import utils from '../engine/utils'
 const PIXI = require('pixi.js')
 require('./pixi-layers')
@@ -21,10 +22,12 @@ class TimeJS {
       this.app.stage = new PIXI.display.Stage()
       this.app.stage.group.enableSort = true
       // this.app.stage.position.set(700,100)
-      // this.app.stage.scale.set(2,2)
+      // this.app.stage.scale.set(2, 2)
       this.group0 = new PIXI.display.Group(0, false)
       this.group1 = new PIXI.display.Group(1, false)
-      this.app.stage.addChild(new PIXI.display.Layer(this.group0))
+
+      let group0 = new PIXI.display.Layer(this.group0)
+      this.app.stage.addChild(group0)
       this.app.stage.addChild(new PIXI.display.Layer(this.group1))
 
       // Add the canvas that Pixi automatically created for you to the HTML document
@@ -33,6 +36,8 @@ class TimeJS {
       this.currentRoomKey = ''
       this.nextRoomKey = ''
       TimeJS.instance = this
+
+      this.camera = new Camera(this)
     }
 
     this.OnLoadedDone = this.OnLoadedDone.bind(this)
@@ -90,6 +95,7 @@ class TimeJS {
   Update (delta) {
     // message.setText(Math.round(app.ticker.FPS))
     inputManager.Update()
+    this.camera.Update(delta)
     this.CheckRoomTransition()
     for (let [key, val] of this.rooms.entries()) {
       // TODO change this

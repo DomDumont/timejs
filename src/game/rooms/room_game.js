@@ -22,7 +22,9 @@ export default class RoomGame extends Room {
           this.AddGAO(new ObjectCollisions(this, obj))
           break
         case 'PLAYER':
-          this.AddGAO(new ObjectPlayer(this, obj))
+          let tempPlayer = new ObjectPlayer(this, obj)
+          this.AddGAO(tempPlayer)
+          timejs.camera.Follow(tempPlayer)
           break
       }
     })
